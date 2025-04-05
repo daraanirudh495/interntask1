@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loan Default Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-white shadow-xl rounded-lg p-10 w-full max-w-lg">
+        <h2 class="text-2xl font-bold mb-6 text-center text-indigo-600">Loan Default Prediction</h2>
+        <form action="/predict" method="post" class="space-y-4">
+            <div>
+                <label class="block mb-1">Age</label>
+                <input type="number" name="Age" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Income</label>
+                <input type="number" name="Income" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Loan Amount</label>
+                <input type="number" name="LoanAmount" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Credit Score</label>
+                <input type="number" name="CreditScore" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Months Employed</label>
+                <input type="number" name="MonthsEmployed" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Number of Credit Lines</label>
+                <input type="number" name="NumCreditLines" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Interest Rate</label>
+                <input type="number" step="0.01" name="InterestRate" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Loan Term (months)</label>
+                <input type="number" name="LoanTerm" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">DTI Ratio</label>
+                <input type="number" step="0.01" name="DTIRatio" required class="w-full border rounded px-3 py-2">
+            </div>
+            <div>
+                <label class="block mb-1">Has Co-Signer?</label>
+                <select name="HasCoSigner" required class="w-full border rounded px-3 py-2">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <label class="block mb-1">Has Mortgage?</label>
+                <select name="HasMortgage" required class="w-full border rounded px-3 py-2">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div>
+                <label class="block mb-1">Has Dependents?</label>
+                <select name="HasDependents" required class="w-full border rounded px-3 py-2">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700 transition">
+                    Predict
+                </button>
+            </div>
+        </form>
+
+        {% if prediction_text %}
+            <div class="mt-6 text-center text-lg font-semibold text-green-700">
+                {{ prediction_text }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
